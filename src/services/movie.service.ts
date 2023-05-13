@@ -5,8 +5,8 @@ import {urls} from "../constants";
 import {IRes} from "../types";
 
 class MovieService{
-    getAll():IRes<IPagination<IMovie[]>> {
-        return axiosService.get(urls.movies)
+    getAll(page: number = 1):IRes<IPagination<IMovie[]>> {
+        return axiosService.get(urls.movies+ '?page=' + page)
     }
 
 }

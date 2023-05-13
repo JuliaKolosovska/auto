@@ -1,13 +1,15 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {IError, IMovie, IPagination} from "../../interfaces";
+import {IError, IMovie, IMoviesService, IPagination} from "../../interfaces";
 import {movieService} from "../../services/movie.service";
 import {AxiosError} from "axios";
 
 interface IState {
     movies: IMovie[],
-    prev: string,
-    next: string,
+    currentPage: number,
     errors: IError,
+    total_results: number,
+    total_pages: number,
+    loading: boolean
 
 
 }
@@ -15,17 +17,18 @@ interface IState {
 
 const initialState: IState = {
     movies: [],
-    prev: null,
-    next: null,
+    currentPage: 1,
     errors: null,
-
+    total_results: 0,
+    total_pages: 500,
+    loading: false
 };
 
-const getAll = createAsyncThunk<IPagination<IMovie[]>, void>(
+const getAll = createAsyncThunk<IPagination<IMovie[]>, {currentPage:number}>(
     'movieSlice/getAll',
-    async (_, {rejectWithValue}) => {
+    async ({currentPage}, {rejectWithValue}) => {
         try {
-            const {data} = await movieService.getAll();
+            const {data} = await movieService.getAll(currentPage);
             return data
         } catch (e) {
             const err = e as AxiosError
@@ -37,10 +40,7 @@ const getAll = createAsyncThunk<IPagination<IMovie[]>, void>(
 const slice = createSlice({
     name: 'movieSlice',
     initialState,
-    reducers: {
-
-
-    },
+    reducers: {},
     extraReducers: builder =>
         builder
 
@@ -54,7 +54,7 @@ const movieActions = {
     getAll
 }
 
-export{
+export {
     movieActions,
     movieReducer
 }
