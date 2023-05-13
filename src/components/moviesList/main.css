@@ -1,0 +1,19 @@
+.moviesContainer {
+    background: #d4d4fa;
+    width: 70vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: 15vw;
+}
+
+.moviesContainer a {
+    text-decoration: none;
+    color: #5454bd;
+
+}
+
+.moviesContainer a[class='active'] {
+    color: #770202;
+}

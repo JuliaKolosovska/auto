@@ -1,8 +1,9 @@
 export interface IPagination<T> {
+    results: any;
     total_items: number;
     total_pages: number;
-    prev: string;
-    next: string;
+    prev: number;
+    next: number;
     items: T;
 
 }

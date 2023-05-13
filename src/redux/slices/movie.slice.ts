@@ -24,7 +24,7 @@ const initialState: IState = {
     loading: false
 };
 
-const getAll = createAsyncThunk<IPagination<IMovie[]>, {currentPage:number}>(
+const getAll = createAsyncThunk<IPagination<IMovie[]>, { currentPage: number }>(
     'movieSlice/getAll',
     async ({currentPage}, {rejectWithValue}) => {
         try {
@@ -40,10 +40,28 @@ const getAll = createAsyncThunk<IPagination<IMovie[]>, {currentPage:number}>(
 const slice = createSlice({
     name: 'movieSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        resetPage: (state) => {
+            state.currentPage = 1
+        },
+        setPage: (state, action) => {
+            state.currentPage = action.payload
+        }
+    },
     extraReducers: builder =>
         builder
-
+            .addCase(getAll.fulfilled, (state, action) => {
+                state.movies = action.payload.results
+                if (action.payload.total_pages <= 500) {
+                    state.total_pages = action.payload.total_pages
+                } else {
+                    state.total_pages = 500
+                }
+                state.loading = false
+            })
+            .addCase(getAll.pending,(state)=>{
+                state.loading=true
+            })
 
 })
 
