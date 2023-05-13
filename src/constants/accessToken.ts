@@ -1,0 +1,5 @@
+const accessToken='eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwOTk1YjBmNTI2MTRmNmRlNmZjN2Y2MGVhNzNlNzgyNCIsInN1YiI6IjYzNDliMDYzYjdhYmI1MDA3ZWQ0ZTIxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.aup_xBfBXXeGhh_9Lf8ryBiybnjXQv2NjMHU3iK6CQ0'
+
+export {
+    accessToken
+}
