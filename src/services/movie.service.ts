@@ -1,7 +1,7 @@
 import {axiosService} from "./axios.service";
 
 import {IMovie, IPagination} from "../interfaces";
-import {urls} from "../constants";
+import {urls} from "../configs";
 import {IRes} from "../types";
 
 class MovieService{

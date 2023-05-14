@@ -1,6 +1,7 @@
 import React from 'react';
 
-import stepan from './Stepan.jpg'
+import stepan from '../../images/Stepan.jpg'
+
 
 const UserInfo = () => {
     return (

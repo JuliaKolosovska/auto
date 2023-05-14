@@ -9,7 +9,8 @@ interface IState {
     errors: IError,
     total_results: number,
     total_pages: number,
-    loading: boolean
+    loading: boolean,
+
 
 
 }

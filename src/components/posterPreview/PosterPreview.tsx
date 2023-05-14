@@ -1,9 +1,17 @@
-import React from 'react';
+import React, {FC} from 'react';
+import {useAppSelector} from "../../hooks";
+import {IMovie} from "../../interfaces";
 
-const PosterPreview = () => {
+
+interface IProps {
+        movie: IMovie
+}
+
+const PosterPreview:FC<IProps> = ({movie}) => {
+    const {poster_path}=movie;
     return (
         <div>
-            PosterPreview
+            <img className={'poster'} src={"https://image.tmdb.org/t/p/w500/" + poster_path} alt="{title}"/>
         </div>
     );
 };

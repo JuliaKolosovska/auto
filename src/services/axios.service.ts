@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import {accessToken, baseURL} from "../constants";
+import {accessToken, baseURL, posterURL} from "../configs";
 
 
 const axiosService=axios.create({baseURL});
@@ -11,6 +11,8 @@ axiosService.interceptors.request.use(res=> {
 
     return res
 })
+
+
 
 export {
     axiosService
