@@ -1,28 +1,35 @@
 import React, {useState} from 'react';
-import {useAppSelector} from "../../hooks";
+import {useAppDispatch, useAppSelector} from "../../hooks";
 import {useSearchParams} from "react-router-dom";
-import { useDispatch } from 'react-redux';
+
+import {movieActions} from "../../redux/slices";
 
 
 
 const MoviePagination = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const { currentPage } = useAppSelector(state => state.movieReducer);
     const [, setQuery] = useSearchParams();
     const [totalPages] = useState(500);
     const [pagesToShow] = useState(15);
 
+
     const prev = () => {
-        setQuery(currentPage => ({ ...currentPage, page: +currentPage.get('currentPage') - 1 }));
+        setQuery(currentPage => ({ ...currentPage, page: +(currentPage.get('currentPage')) - 1 }));
+
     };
 
     const next = () => {
-        setQuery(currentPage => ({ ...currentPage, page: +currentPage.get('currentPage') + 1 }));
+        setQuery(currentPage => ({ ...currentPage, page: +(currentPage.get('currentPage')) + 1 }));
+    };
+
+    const pageButton = () => {
+        setQuery(currentPage => ({ ...currentPage, page: currentPage }));
     };
 
     const generatePageNumbers = () => {
-        const current = currentPage;
+        const current = +currentPage;
         const last = totalPages;
         const start = Math.max(1, current - Math.floor(pagesToShow / 2));
         const end = Math.min(last, start + pagesToShow - 1);
@@ -35,7 +42,7 @@ const MoviePagination = () => {
 
         return pageNumbers;
     };
-
+    dispatch(movieActions.resetPage())
     return (
         <div>
             <ul className="pagination">
@@ -45,7 +52,8 @@ const MoviePagination = () => {
                 {generatePageNumbers().map((number) => (
                     <li
                         key={number}
-                        onClick={() => (number)}
+                        onClick={pageButton}
+                        // onClick={() => (number)}
                         className={'page-number ' + (number === currentPage ? 'active' : '')}
                     >
                         {number}

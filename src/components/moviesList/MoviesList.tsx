@@ -14,7 +14,12 @@ const MoviesList:FC = () => {
 
 
     useEffect(()=>{
+
         dispatch(movieActions.getAll({currentPage}))
+        return () => {
+            dispatch(movieActions.resetPage())
+
+        }
     },[dispatch]);
 
 
