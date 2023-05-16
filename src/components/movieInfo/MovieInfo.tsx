@@ -1,41 +1,52 @@
-import React, {FC, useEffect} from 'react';
+import React, {FC} from 'react';
 
-import {PosterPreview} from "../posterPreview/PosterPreview";
-import {useAppDispatch, useAppSelector} from "../../hooks";
-import {movieActions} from "../../redux/slices";
-import {MoviesListCard} from "../moviesListCard/MoviesListCard";
+import {IMovie} from "../../interfaces";
 
 
-export interface IMovieDatails {
-    id: number,
-    title: string,
-    original_title: string,
-    poster_path: string,
+export interface IMovieDetails {
+    adult: boolean,
     backdrop_path: string,
-    release_date: string,
-    runtime: number
-    genres: string[],
     budget: number,
+    genres: object[],
+    id: number,
+    imdb_id: string,
+    original_language: string,
+    original_title: string,
+    overview: string,
+    popularity: number,
+    poster_path: string,
+    release_date: string,
     revenue: number,
+    runtime: number,
+    title: string,
     vote_average: number,
-    overview: string
+    vote_count: number
 }
 
-const MovieInfo: FC<IMovieDatails> = ({id,budget, revenue, original_title, overview, vote_average, runtime, genres, title, poster_path, release_date}) => {
+const MovieInfo: FC<IMovieDetails> = ({
+                                          id,
+                                          original_title,
+                                          genres,
+                                          overview,
+                                          vote_average,
+                                          title,
+                                          poster_path,
+                                          release_date
+                                      }) => {
 
 
     return (
-        <div>
+        <div className={'moviesContainer'}>
 
-                <div>{title}</div>
-                <div>Original title: {original_title}</div>
-                <div>{genres}</div>
-                <div>{release_date}</div>
-                <div>Budget: {budget}</div>
-                <div>Revenue: {revenue}</div>
-                <div>Runtime: {runtime}</div>
-                <div>Vote: {vote_average}</div>
-                <div>{overview}</div>
+            <div>{id}</div>
+            <div>{title}</div>
+            <div>Original title: {original_title}</div>
+            {/*<div>{genres}</div>*/}
+
+            <div>{release_date}</div>
+
+            <div>Vote: {vote_average}</div>
+            <div>{overview}</div>
 
 
         </div>
