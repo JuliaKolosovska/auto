@@ -22,3 +22,22 @@ export interface IMoviesService {
     total_pages: number
 }
 
+export interface IMovieDetails {
+    adult: boolean,
+    backdrop_path: string,
+    budget: number,
+    genres: object[],
+    id: number,
+    imdb_id: string,
+    original_language: string,
+    original_title: string,
+    overview: string,
+    popularity: number,
+    poster_path: string,
+    release_date: string,
+    revenue: number,
+    runtime: number,
+    title: string,
+    vote_average: number,
+    vote_count: number
+}

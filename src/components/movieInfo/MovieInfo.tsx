@@ -1,34 +1,16 @@
 import React, {FC, useEffect} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import {useDispatch } from 'react-redux';
 import {movieActions} from "../../redux/slices";
-import {IMovie} from "../../interfaces";
+import {IMovieDetails} from "../../interfaces";
+import {useAppSelector} from "../../hooks";
 
 
 
-export interface IMovieDetails {
-    adult: boolean,
-    backdrop_path: string,
-    budget: number,
-    genres: object[],
-    id: number,
-    imdb_id: string,
-    original_language: string,
-    original_title: string,
-    overview: string,
-    popularity: number,
-    poster_path: string,
-    release_date: string,
-    revenue: number,
-    runtime: number,
-    title: string,
-    vote_average: number,
-    vote_count: number
-}
 
-const MovieInfo: FC<IMovie> = ({
+const MovieInfo: FC<IMovieDetails> = ({
                                           id,
                                           original_title,
-                                          genre_ids,
+                                          genres,
                                           overview,
                                           vote_average,
                                           title,
@@ -38,9 +20,9 @@ const MovieInfo: FC<IMovie> = ({
 
 
     const dispatch = useDispatch();
-    const {movies, } = useSelector((state) => state.movies);
+    const {movie} = useAppSelector((state) => state.movie);
     useEffect(() => {
-        dispatch(movieActions.getMovieDetails(id))
+        dispatch(movieActions.getMovieDetails({id}))
     }, [dispatch]);
     return (
         <div className={'moviesContainer'}>

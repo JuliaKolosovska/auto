@@ -1,8 +1,9 @@
 import React from 'react';
-import {IMovieDetails, MovieInfo} from "../components";
+import {MovieInfo} from "../components";
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {movieService} from "../services/movie.service";
+import {IMovieDetails} from "../interfaces";
 
 
 
