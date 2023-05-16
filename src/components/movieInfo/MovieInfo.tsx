@@ -1,6 +1,8 @@
-import React, {FC} from 'react';
-
+import React, {FC, useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {movieActions} from "../../redux/slices";
 import {IMovie} from "../../interfaces";
+
 
 
 export interface IMovieDetails {
@@ -23,10 +25,10 @@ export interface IMovieDetails {
     vote_count: number
 }
 
-const MovieInfo: FC<IMovieDetails> = ({
+const MovieInfo: FC<IMovie> = ({
                                           id,
                                           original_title,
-                                          genres,
+                                          genre_ids,
                                           overview,
                                           vote_average,
                                           title,
@@ -35,6 +37,11 @@ const MovieInfo: FC<IMovieDetails> = ({
                                       }) => {
 
 
+    const dispatch = useDispatch();
+    const {movies, } = useSelector((state) => state.movies);
+    useEffect(() => {
+        dispatch(movieActions.getMovieDetails(id))
+    }, [dispatch]);
     return (
         <div className={'moviesContainer'}>
 

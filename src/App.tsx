@@ -4,7 +4,9 @@ import {MainLayout} from "./layouts";
 import {MovieDetailPage, MoviesPage} from "./pages";
 
 
+
 function App() {
+
   return (
       <Routes>
         <Route path={'/'} element={<MainLayout/>}>

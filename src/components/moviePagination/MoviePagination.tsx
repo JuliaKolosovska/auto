@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
 import {useAppSelector} from "../../hooks";
 import {useSearchParams} from "react-router-dom";
+import { useDispatch } from 'react-redux';
 
 
 
 const MoviePagination = () => {
+    const dispatch = useDispatch();
+
     const { currentPage } = useAppSelector(state => state.movieReducer);
     const [, setQuery] = useSearchParams();
     const [totalPages] = useState(500);

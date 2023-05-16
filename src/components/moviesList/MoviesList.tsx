@@ -1,5 +1,4 @@
 import React, {FC, useEffect} from 'react';
-import {useSearchParams} from "react-router-dom";
 
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {movieActions} from "../../redux/slices";
