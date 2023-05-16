@@ -20,22 +20,22 @@ const MovieInfo: FC<IMovieDetails> = ({
 
 
     const dispatch = useDispatch();
-    const {movie} = useAppSelector((state) => state.movie);
+    const movie = useAppSelector((state) => state.movieReducer.movie);
     useEffect(() => {
         dispatch(movieActions.getMovieDetails({id}))
     }, [dispatch]);
     return (
         <div className={'moviesContainer'}>
 
-            <div>{id}</div>
-            <div>{title}</div>
-            <div>Original title: {original_title}</div>
+            <div>{movie.id}</div>
+            <div>{movie.title}</div>
+            <div>Original title: {movie.original_title}</div>
             {/*<div>{genres}</div>*/}
 
-            <div>{release_date}</div>
+            <div>{movie.release_date}</div>
 
-            <div>Vote: {vote_average}</div>
-            <div>{overview}</div>
+            <div>Vote: {movie.vote_average}</div>
+            <div>{movie.overview}</div>
 
 
         </div>
