@@ -161,3 +161,7 @@ ul {
     font-family: "Lucida Console", "Courier New", monospace;
     color: #35355e;
 }
+
+.page-number{
+    border: none;
+}
