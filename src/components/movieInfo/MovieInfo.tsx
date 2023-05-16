@@ -3,6 +3,7 @@ import {useDispatch } from 'react-redux';
 import {movieActions} from "../../redux/slices";
 import {IMovieDetails} from "../../interfaces";
 import {useAppSelector} from "../../hooks";
+import {RootState} from "../../redux";
 
 
 
@@ -20,7 +21,7 @@ const MovieInfo: FC<IMovieDetails> = ({
 
 
     const dispatch = useDispatch();
-    const movie = useAppSelector((state) => state.movieReducer.movie);
+    const movie = useAppSelector((state: RootState) => state.movieReducer.movie);
     useEffect(() => {
         dispatch(movieActions.getMovieDetails({id}))
     }, [dispatch]);
