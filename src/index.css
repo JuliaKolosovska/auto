@@ -43,11 +43,11 @@ ul {
     background: #fff;
 }
 
-.header-container {
+#header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #eeeeff;
+    /*background: #eeeeff;*/
     width: 70vw;
     margin-left: 15vw;
     margin-top: 50px;
@@ -57,7 +57,7 @@ ul {
 
 .logo {
     text-decoration: none;
-    color: #5454bd;
+    color: var(--color-secondary);
     margin-left: 40px;
     font-size: 35px;
     font-family: "Brush Script MT", "Courier New", monospace;
@@ -83,6 +83,7 @@ ul {
 
 .moviesContainer {
     background: #d4d4fa;
+    /*background:var(--color-primary);*/
     width: 70vw;
     display: flex;
     flex-wrap: wrap;
@@ -159,7 +160,8 @@ ul {
     margin-left: 10px;
     size:30px;
     font-family: "Lucida Console", "Courier New", monospace;
-    color: #35355e;
+    /*color: #35355e;*/
+    color:var(--color-secondary);
 }
 
 .page-number{

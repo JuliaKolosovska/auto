@@ -56,7 +56,12 @@ input:checked + .slider:before {
     border-radius: 50%;
 }
 
-.root {
+.dark {
     background-color: #35357a;
     color: #d4d4fa;
+
+    --color-primary: #35357a;
+    --color-secondary: #d4d4fa;
+
+
 }

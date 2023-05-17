@@ -1,4 +1,7 @@
-.root {
+.light {
     background-color: #d4d4fa;
     color: #35357a;
+
+    --color-primary: #d4d4fa;
+    --color-secondary: #35357a;
 }
