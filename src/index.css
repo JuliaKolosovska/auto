@@ -165,3 +165,21 @@ ul {
 .page-number{
     border: none;
 }
+
+.moviesInfoContainer{
+    background: #d4d4fa;
+    width: 70vw;
+    display: flex;
+    /*flex-wrap: wrap;*/
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 15vw;
+    padding: 15px;
+}
+.posterDiv{
+    width: 35%;
+}
+.movieInfo{
+    width: 60%;
+}

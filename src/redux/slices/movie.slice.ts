@@ -27,7 +27,7 @@ const initialState: IState = {
     total_results: 0,
     total_pages: 500,
     loading: false,
-    id: null,
+    id: -1,
     movie: null
 };
 

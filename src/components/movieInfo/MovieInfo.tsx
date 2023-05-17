@@ -1,47 +1,45 @@
 import React, {FC, useEffect} from 'react';
 import {useDispatch } from 'react-redux';
 import {movieActions} from "../../redux/slices";
-import {IMovieDetails} from "../../interfaces";
+
 import {useAppSelector} from "../../hooks";
-import {RootState} from "../../redux";
-import { Dispatch, AnyAction } from 'redux';
+import {PosterPreview} from "../posterPreview/PosterPreview";
 
 
+interface IProps {
+    movieId: string;
+}
 
 
-const MovieInfo: FC = ({
-                                          // id,
-                                          // original_title,
-                                          // genres,
-                                          // overview,
-                                          // vote_average,
-                                          // title,
-                                          // poster_path,
-                                          // release_date
-                                      }) => {
+const MovieInfo: FC<IProps> = ({movieId}) => {
 
 
     const dispatch = useDispatch<any>();
-    const {movie, id}=useAppSelector(state => state.movieReducer);
+    const {movie}=useAppSelector(state => state.movieReducer);
     useEffect(() => {
-        dispatch(movieActions.getMovieDetails({id:movie.id}))
-    }, [dispatch]);
+        dispatch(movieActions.getMovieDetails({id: parseInt(movieId)}))
+    }, [dispatch, movieId]);
 
     if (!movie) {
         return <h4 className={'loading'}>Loading......</h4>}
 
     return (
-        <div className={'moviesContainer'}>
+        <div className={'moviesInfoContainer'}>
+            <div className={'posterDiv'}>
+                <img className={'poster'} src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
+                    alt="{title}"/></div>
+            <div className={'movieInfo'}>
+                {/*<div>{movie.id}</div>*/}
+                <h2>{movie.title}</h2>
 
-            <div>{movie.id}</div>
-            <div>{movie.title}</div>
-            <div>Original title: {movie.original_title}</div>
-            {/*<div>{genres}</div>*/}
+                <div>Original title: {movie.original_title}</div>
+                {/*<div>{genres}</div>*/}
 
-            <div>{movie.release_date}</div>
+                <div>{movie.release_date}</div>
 
-            <div>Vote: {movie.vote_average}</div>
-            <div>{movie.overview}</div>
+                <div>Vote: {movie.vote_average}</div>
+                <div>{movie.overview}</div>
+            </div>
 
 
         </div>
