@@ -5,6 +5,6 @@ export * from './moviesList/MoviesList';
 export * from './moviesListCard/MoviesListCard';
 export * from './moviePagination/MoviePagination';
 export * from './posterPreview/PosterPreview';
-export * from './starsRating/StarsRating';
-export * from './theme/Theme';
+export * from './theme/ThemeContext';
+export * from './theme/ThemeSwitcher';
 export * from './userInfo/UserInfo';

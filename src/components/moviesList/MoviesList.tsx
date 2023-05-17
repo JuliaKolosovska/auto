@@ -4,7 +4,7 @@ import {useAppDispatch, useAppSelector} from "../../hooks";
 import {movieActions} from "../../redux/slices";
 import {MoviesListCard} from "../moviesListCard/MoviesListCard";
 import {MoviePagination} from "../moviePagination/MoviePagination";
-import {Theme} from "../theme/Theme";
+import {ThemeSwitcher} from "../theme/ThemeSwitcher";
 
 
 

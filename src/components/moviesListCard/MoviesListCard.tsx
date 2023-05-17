@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import {IMovie} from "../../interfaces";
 import {Link} from "react-router-dom";
+import {Rating} from 'react-simple-star-rating'
 
 
 interface IProps {
@@ -16,7 +17,16 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
             <Link to={`/movie/${id}`}>
                 <img className={'poster'} src={"https://image.tmdb.org/t/p/w500/" + poster_path} alt="{title}"></img>
                 <div className={'title'}>{title}</div>
-                <div className={'vote'}>{vote_average}</div>
+
+                <div className={'vote'}>
+                    <Rating
+                    className={'movie__info-star'}
+                    readonly={true}
+                    initialValue={Math.round(vote_average)}
+                    iconsCount={10}
+                    size={10}
+                />
+                </div>
             </Link>
         </div>
 

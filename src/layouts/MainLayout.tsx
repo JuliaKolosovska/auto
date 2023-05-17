@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Header, Theme} from "../components";
+import {Header, ThemeSwitcher} from "../components";
 import {Outlet} from "react-router-dom";
 
 

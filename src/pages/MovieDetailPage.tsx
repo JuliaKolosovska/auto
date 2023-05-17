@@ -1,5 +1,5 @@
 import React,{FC} from 'react';
-import {MovieInfo, Theme} from "../components";
+import {MovieInfo, ThemeSwitcher} from "../components";
 import {useParams} from "react-router-dom";
 
 

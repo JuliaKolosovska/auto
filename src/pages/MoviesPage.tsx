@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {MoviesList, Theme} from "../components";
+import {MoviesList, ThemeSwitcher} from "../components";
 
 const MoviesPage = () => {
     return (
