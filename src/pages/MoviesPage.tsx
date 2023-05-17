@@ -1,11 +1,12 @@
 import React from 'react';
 
-import {MoviesList} from "../components";
+import {MoviesList, Theme} from "../components";
 
 const MoviesPage = () => {
     return (
         <div>
             <MoviesList/>
+
         </div>
     );
 };

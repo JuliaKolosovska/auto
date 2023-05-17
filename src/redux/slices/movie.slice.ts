@@ -22,7 +22,7 @@ export interface IState {
 const initialState: IState = {
     movies: [],
     page: 1,
-    currentPage:15,
+    currentPage:0,
     errors: null,
     total_results: 0,
     total_pages: 500,

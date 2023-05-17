@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 
-import './main.css'
+import './light.css';
+import './dark.css';
+
 
 const Theme = () => {
     const [theme, setTheme] = useState('light');
@@ -18,10 +20,10 @@ const Theme = () => {
         document.body.className = theme;
     }, [theme]);
     return (
-            <label  className="switch">
-                <input className={`Theme ${theme}`} onClick={toggleTheme} type="checkbox"/>
-                <span className="slider round"></span>
-            </label>
+        <label  className="switch">
+            <input className={`Theme ${theme}`} onClick={toggleTheme} type="checkbox"/>
+            <span className="slider round"></span>
+        </label>
     );
 };
 

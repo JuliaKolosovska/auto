@@ -1,5 +1,5 @@
 import React,{FC} from 'react';
-import {MovieInfo} from "../components";
+import {MovieInfo, Theme} from "../components";
 import {useParams} from "react-router-dom";
 
 
@@ -13,6 +13,7 @@ const MovieDetailPage:FC= () => {
     return (
         <div>
            <MovieInfo movieId={id}/>
+
 
         </div>
     );

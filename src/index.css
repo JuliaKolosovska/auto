@@ -170,7 +170,7 @@ ul {
     background: #d4d4fa;
     width: 70vw;
     display: flex;
-    /*flex-wrap: wrap;*/
+    flex-wrap: wrap;
     box-sizing: border-box;
     justify-content: space-between;
     align-items: center;
@@ -178,8 +178,8 @@ ul {
     padding: 15px;
 }
 .posterDiv{
-    width: 35%;
+    width: 45%;
 }
 .movieInfo{
-    width: 60%;
+    width: 50%;
 }
