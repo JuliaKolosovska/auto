@@ -7,7 +7,7 @@ import {IRes} from "../types";
 
 class MovieService {
     getAll(page: string): IRes<IPagination<IMovie[]>> {
-        return axiosService.get(urls.movies+ '' + page)
+        return axiosService.get(urls.movies+`{page}`)
     };
 
     byId(id: number): IRes<IMovieDetails> {

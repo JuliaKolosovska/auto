@@ -14,18 +14,13 @@ const MoviesList:FC = () => {
 
 
     useEffect(()=>{
-
-        dispatch(movieActions.getAll({currentPage}))
-        return () => {
-            dispatch(movieActions.resetPage())
-
-        }
+        dispatch(movieActions.getAll({currentPage: currentPage.toString()}))
     },[dispatch]);
 
 
 
     return (
-        <div className={'moviesContainer'}>
+        <div className={'moviesContainer'} >
             {movies.map((movie)=><MoviesListCard key={movie.id} movie={movie}/>)}
 <MoviePagination/>
         </div>

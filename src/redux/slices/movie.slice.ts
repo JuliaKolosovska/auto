@@ -1,5 +1,4 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {AsyncThunkAction} from '@reduxjs/toolkit';
 import {AxiosError} from "axios";
 import {IError, IMovie, IMovieDetails, IPagination} from "../../interfaces";
 import {movieService} from "../../services/movie.service";
@@ -9,12 +8,12 @@ export interface IState {
     movie: IMovieDetails | null,
     movies: IMovie[],
     page: number,
-    currentPage:number|string
+    currentPage:number,
     errors: IError,
     total_results: number,
     total_pages: number,
     loading: boolean,
-    id: number | null,
+    id: number,
 
 
 }
@@ -22,8 +21,8 @@ export interface IState {
 
 const initialState: IState = {
     movies: [],
-    page: 5,
-    currentPage:1,
+    page: 1,
+    currentPage:15,
     errors: null,
     total_results: 0,
     total_pages: 500,
@@ -63,11 +62,11 @@ const slice = createSlice({
     initialState,
     reducers: {
         resetPage: (state) => {
-            state.currentPage = 1
+            state.currentPage =1
         },
         setPage: (state, action) => {
-            // state.currentPage = action.payload
-            state = { ...state, currentPage: action.payload }
+            state.currentPage = action.payload
+            // state = { ...state, currentPage: action.payload }
         }
     },
     extraReducers: builder =>

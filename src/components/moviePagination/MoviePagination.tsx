@@ -16,8 +16,8 @@ const MoviePagination = () => {
 
 
     const prev = () => {
-        setQuery(currentPage => ({ ...currentPage, page: +(currentPage.get('currentPage')) - 1 }));
-
+        // setQuery(currentPage => ({ ...currentPage, page: +(currentPage.get('currentPage')) - 1 }));
+        dispatch(movieActions.resetPage())
     };
 
     const next = () => {
@@ -25,11 +25,12 @@ const MoviePagination = () => {
     };
 
     const pageButton = () => {
-        setQuery(currentPage => ({ ...currentPage, page: currentPage }));
+        // setQuery(currentPage => ({ ...currentPage, page: currentPage }));
+        dispatch(movieActions.setPage(currentPage))
     };
 
     const generatePageNumbers = () => {
-        const current = +currentPage;
+        const current = currentPage;
         const last = totalPages;
         const start = Math.max(1, current - Math.floor(pagesToShow / 2));
         const end = Math.min(last, start + pagesToShow - 1);
@@ -42,7 +43,7 @@ const MoviePagination = () => {
 
         return pageNumbers;
     };
-    dispatch(movieActions.resetPage())
+
     return (
         <div>
             <ul className="pagination">

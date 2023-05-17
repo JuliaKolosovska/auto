@@ -9,6 +9,7 @@ interface IProps {
 
 const MoviesListCard: FC<IProps> = ({movie}) => {
     const {poster_path, title, vote_average} = movie;
+
     return (
 
         <div className='movieCard'>

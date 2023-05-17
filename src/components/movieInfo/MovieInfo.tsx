@@ -9,23 +9,27 @@ import { Dispatch, AnyAction } from 'redux';
 
 
 
-const MovieInfo: FC<IMovieDetails> = ({
-                                          id,
-                                          original_title,
-                                          genres,
-                                          overview,
-                                          vote_average,
-                                          title,
-                                          poster_path,
-                                          release_date
+const MovieInfo: FC = ({
+                                          // id,
+                                          // original_title,
+                                          // genres,
+                                          // overview,
+                                          // vote_average,
+                                          // title,
+                                          // poster_path,
+                                          // release_date
                                       }) => {
 
 
     const dispatch = useDispatch<any>();
-    const movie = useAppSelector((state: RootState) => state.movieReducer.movie);
+    const {movie, id}=useAppSelector(state => state.movieReducer);
     useEffect(() => {
-        dispatch(movieActions.getMovieDetails({id}))
+        dispatch(movieActions.getMovieDetails({id:movie.id}))
     }, [dispatch]);
+
+    if (!movie) {
+        return <h4 className={'loading'}>Loading......</h4>}
+
     return (
         <div className={'moviesContainer'}>
 
