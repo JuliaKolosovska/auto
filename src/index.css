@@ -188,5 +188,10 @@ ul {
     width: 45%;
 }
 .movieInfo{
+    height: 100%;
     width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
 }
