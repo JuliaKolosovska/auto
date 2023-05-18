@@ -216,3 +216,30 @@ ul {
     flex-direction: column;
     align-items: center;
 }
+
+.genre-badge{
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    justify-content: space-around;
+    align-items: center;
+
+    margin-left: 15vw;
+    width: 70vw;
+    height: 70px;
+    background: #d4d4fa;
+}
+.genres-btn{
+    border: none;
+    border-radius: 10px;
+    margin: 10px;
+    background: #ececfc;
+}
+
+.genres-btn:hover {
+    color: #fff;
+    background: #5555bd;
+    border: 1px solid #8481f6;
+    box-shadow: 0 0 10px #8885ff;
+}

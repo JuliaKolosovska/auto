@@ -5,7 +5,7 @@ import {GenreBadge, MoviesList, ThemeSwitcher} from "../components";
 const MoviesPage = () => {
     return (
         <div>
-            <GenreBadge genresIds={[]} />
+<GenreBadge genresIds={[]}/>
             <MoviesList/>
 
         </div>

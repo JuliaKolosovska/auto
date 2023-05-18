@@ -6,6 +6,7 @@ import {useAppSelector} from "../../hooks";
 import {Rating} from 'react-simple-star-rating'
 import {GenreBadge} from "../genreBadge/GenreBadge";
 import {IGenre} from "../../interfaces";
+import {posterURL} from "../../configs";
 
 
 interface IProps {
@@ -30,9 +31,10 @@ const MovieInfo: FC<IProps> = ({movieId, genres}) => {
     return (
         <div className={'moviesInfoContainer'}>
             <div className={'posterDiv'}>
-                <img className={'poster'} src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
+                <img className={'poster'} src={posterURL + movie.poster_path}
                      alt="{title}"/></div>
             <div className={'movieInfo'}>
+                <GenreBadge  genresIds={genres.map(genre => genre.id)}/>
                 <div className={'rating'}><Rating
                     readonly={true}
                     initialValue={movie.vote_average}
@@ -45,7 +47,7 @@ const MovieInfo: FC<IProps> = ({movieId, genres}) => {
                 </div>
 
                 <h1>{movie.title}</h1>
-                <GenreBadge  genresIds={genres.map(genre => genre.id)}/>
+
 
                 <div>Original title: {movie.original_title}</div>
                 {/*<div>{genres}</div>*/}

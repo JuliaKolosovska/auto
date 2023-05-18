@@ -1,6 +1,10 @@
-import React, {FC, useEffect} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {genreActions} from "../../redux/slices";
+import {IGenre} from "../../interfaces";
+import { AxiosError } from "axios";
+
+import { PayloadAction } from "@reduxjs/toolkit";
 
 export interface IBadge {
     genresIds: number[],
@@ -9,19 +13,29 @@ export interface IBadge {
 
 const GenreBadge:FC<IBadge> = ({genresIds}) => {
     const {movieGenres} = useAppSelector(state => state.genreReducer)
-
+    const [genres, setGenres] = useState<IGenre[]>([])
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        if (!movieGenres.length ) {
-            dispatch(genreActions.getGenres)
-        }
+        dispatch(genreActions.getGenres())
     }, [])
 
     return (
         <div className={'genre-badge'}>
-            {genresIds.length > 0 ? movieGenres.map(genre => <div key={genre.id}
-                                                               className={'badge-details'}>{genre.name}</div>) : null}
+
+            {movieGenres.map(genre => (
+                <button
+
+                    key={genre.id}
+                    className="genres-btn"
+                    // onClick={() => {
+                    //     dispatch(genreActions.getGenre(genre))
+                    // }}
+                >
+                    {genre.name}
+                </button>
+            ))}
+
         </div>
     );
 };

@@ -1,22 +1,48 @@
 import React,{FC, useState, useEffect} from 'react';
 import {MovieInfo, ThemeSwitcher} from "../components";
 import {useParams} from "react-router-dom";
-import {IMovie} from "../interfaces";
+import {IGenre, IMovie} from "../interfaces";
 import {movieService} from "../services";
 
 
 
 
+interface MovieDetailPageProps {}
 
-const MovieDetailPage:FC= () => {
-    const { id } = useParams<{ id:string }>();
+const MovieDetailPage: FC<MovieDetailPageProps> = () => {
+    const { id } = useParams<{ id: string }>();
+    const [movie, setMovie] = useState<IMovie | undefined>();
+    const [genres, setGenres] = useState<IGenre[]>([]);
 
-    const [movie, setMovie] = useState<IMovie>()
-
-
+    // useEffect(() => {
+    //
+    //     const fetchMovie = async () => {
+    //         try {
+    //             const response = await fetch(`API_URL/movies/${id}`);
+    //             const data = await response.json();
+    //             setMovie(data);
+    //         } catch (error) {
+    //             console.error('Error fetching movie:', error);
+    //         }
+    //     };
+    //
+    //
+    //     const fetchGenres = async () => {
+    //         try {
+    //             const response = await fetch(`API_URL/genres`);
+    //             const data = await response.json();
+    //             setGenres(data);
+    //         } catch (error) {
+    //             console.error('Error fetching genres:', error);
+    //         }
+    //     };
+    //
+    //     fetchMovie();
+    //     fetchGenres();
+    // }, [id]);
     return (
         <div>
-           <MovieInfo movieId={id} genres={movie.genre_ids} />
+           <MovieInfo movieId={id} genres={genres} />
 
 
         </div>

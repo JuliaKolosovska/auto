@@ -5,6 +5,7 @@ import {genreService} from "../../services";
 
 export interface IGenreState {
     movieGenres: IGenre[],
+    movieGenre:null,
     id: number | null,
     status: string | null,
     error: string | null
@@ -12,6 +13,7 @@ export interface IGenreState {
 
 const initialState: IGenreState = {
     movieGenres: [],
+    movieGenre:null,
     id: null,
     status: null,
     error: ''
@@ -33,7 +35,9 @@ const getGenres = createAsyncThunk<IGenre[], void>(
 const genreSlice=createSlice({
     name:'genreSlice',
     initialState,
-    reducers: {},
+    reducers: { getGenre: (state, action) => {
+            state.movieGenre = action.payload
+        }},
     extraReducers: builder => builder
         .addCase(getGenres.fulfilled, (state, action) => {
             state.movieGenres = action.payload
@@ -41,12 +45,13 @@ const genreSlice=createSlice({
         })
 })
 
-const {reducer:genreReducer,actions:{
+const {reducer:genreReducer,actions:{getGenre
 
 }}=genreSlice
 
 const genreActions={
-    getGenres
+    getGenres,
+    getGenre
 }
 
 export {
