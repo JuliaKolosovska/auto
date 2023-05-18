@@ -11,8 +11,10 @@ export interface IMovie {
     release_date: number;
     title: string;
     video: boolean;
+    budget: number,
     vote_average: number;
-    vote_count: number
+    vote_count: number;
+    revenue: number,
 }
 
 export interface IMoviesService {
@@ -27,6 +29,7 @@ export interface IMovieDetails {
     backdrop_path: string,
     budget: number,
     genres: object[],
+    genre_ids:number[];
     id: number,
     imdb_id: string,
     original_language: string,

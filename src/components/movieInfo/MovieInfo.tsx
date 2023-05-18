@@ -11,11 +11,22 @@ import {posterURL} from "../../configs";
 
 interface IProps {
     movieId: string;
-    genres: IGenre[],
+    // genres: IGenre[],
+    genre_ids:number[];
+    id: number,
+    title: string,
+    original_title: string,
+    poster_path: string,
+    release_date: number,
+
+    budget: number,
+    revenue: number,
+    vote_average: number,
+    overview: string
 }
 
 
-const MovieInfo: FC<IProps> = ({movieId, genres}) => {
+const MovieInfo: FC<IProps> = ({movieId, genre_ids}) => {
 
 
     const dispatch = useDispatch<any>();
@@ -34,7 +45,7 @@ const MovieInfo: FC<IProps> = ({movieId, genres}) => {
                 <img className={'poster'} src={posterURL + movie.poster_path}
                      alt="{title}"/></div>
             <div className={'movieInfo'}>
-                <GenreBadge  genresIds={genres.map(genre => genre.id)}/>
+                <GenreBadge genresIds={movie.genre_ids.map(genre => genre)}/>
                 <div className={'rating'}><Rating
                     readonly={true}
                     initialValue={movie.vote_average}
@@ -43,7 +54,7 @@ const MovieInfo: FC<IProps> = ({movieId, genres}) => {
                     size={30}
                 />
 
-                    <div >({movie.vote_count} votes)</div>
+                    <div>({movie.vote_count} votes)</div>
                 </div>
 
                 <h1>{movie.title}</h1>
