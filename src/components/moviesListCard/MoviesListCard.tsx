@@ -20,12 +20,12 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
 
                 <div className={'vote'}>
                     <Rating
-                    className={'movie__info-star'}
-                    readonly={true}
-                    initialValue={Math.round(vote_average)}
-                    iconsCount={10}
-                    size={10}
-                />
+                        readonly={true}
+                        initialValue={vote_average}
+                        allowFraction={true}
+                        iconsCount={10}
+                        size={10}
+                    />
                 </div>
             </Link>
         </div>
