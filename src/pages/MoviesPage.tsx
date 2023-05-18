@@ -1,10 +1,11 @@
 import React from 'react';
 
-import {MoviesList, ThemeSwitcher} from "../components";
+import {GenreBadge, MoviesList, ThemeSwitcher} from "../components";
 
 const MoviesPage = () => {
     return (
         <div>
+            <GenreBadge genresIds={[]} />
             <MoviesList/>
 
         </div>

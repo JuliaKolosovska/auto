@@ -4,14 +4,17 @@ import {movieActions} from "../../redux/slices";
 
 import {useAppSelector} from "../../hooks";
 import {Rating} from 'react-simple-star-rating'
+import {GenreBadge} from "../genreBadge/GenreBadge";
+import {IGenre} from "../../interfaces";
 
 
 interface IProps {
     movieId: string;
+    genres: IGenre[],
 }
 
 
-const MovieInfo: FC<IProps> = ({movieId}) => {
+const MovieInfo: FC<IProps> = ({movieId, genres}) => {
 
 
     const dispatch = useDispatch<any>();
@@ -30,14 +33,19 @@ const MovieInfo: FC<IProps> = ({movieId}) => {
                 <img className={'poster'} src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
                      alt="{title}"/></div>
             <div className={'movieInfo'}>
-                <div><Rating
+                <div className={'rating'}><Rating
                     readonly={true}
                     initialValue={movie.vote_average}
                     allowFraction={true}
                     iconsCount={10}
                     size={30}
-                /></div>
+                />
+
+                    <div >({movie.vote_count} votes)</div>
+                </div>
+
                 <h1>{movie.title}</h1>
+                <GenreBadge  genresIds={genres.map(genre => genre.id)}/>
 
                 <div>Original title: {movie.original_title}</div>
                 {/*<div>{genres}</div>*/}
@@ -45,7 +53,7 @@ const MovieInfo: FC<IProps> = ({movieId}) => {
                 <div>Release date: {movie.release_date}</div>
 
 
-                <div>Overview <br/>{movie.overview}</div>
+                <div>Overview <br/> <br/>{movie.overview}</div>
             </div>
 
 

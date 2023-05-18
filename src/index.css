@@ -1,8 +1,9 @@
-body{
-    margin:0;
+body {
+    margin: 0;
     background-image: url('images/bg.jpg');
     background-size: cover;
 }
+
 ul {
     list-style: none;
 }
@@ -72,14 +73,13 @@ ul {
     border: #fafafd;
     border-radius: 50px;
     padding: 20px;
-    background:var(--color-secondary);
-
-
+    background: var(--color-secondary);
 
 
 }
+
 .search::placeholder {
-    color:var(--color-primary);
+    color: var(--color-primary);
 }
 
 .search:focus {
@@ -90,6 +90,7 @@ ul {
 
 
 .moviesContainer {
+    /*background: #35357AFF;*/
     background: #d4d4fa;
     /*background:var(--color-primary);*/
     width: 70vw;
@@ -117,12 +118,11 @@ ul {
     flex-direction: column;
     justify-content: space-between;
     box-sizing: border-box;
-    padding: 1%;
+    padding: 0.5%;
     align-items: center;
-    margin: 1%;
-    background: #fafafd;
-    width: 16%;
-    height: 350px;
+    margin: 10px;
+    width: 18%;
+    border-radius: 10px;
 
 }
 
@@ -133,47 +133,58 @@ ul {
 }
 
 .poster {
-    width: 98%;
+    border-radius: 10px;
+    width: 100%;
     margin-bottom: 10px;
 }
-.title{
+
+.title {
+
     font-size: 15px;
     font-family: "Lucida Console", "Courier New", monospace;
 }
 
+.title-vote {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+}
 
-.user-container{
+.user-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width:90px;
+    width: 90px;
     height: 100px;
     margin-right: 40px;
 
 }
 
-.user-container:hover{
+.user-container:hover {
     cursor: pointer;
 }
 
-.user-avatar img{
+.user-avatar img {
     width: 40px;
     border-radius: 50%;
 }
 
-.user-name{
+.user-name {
     margin-left: 10px;
-    size:30px;
+    size: 30px;
     font-family: "Lucida Console", "Courier New", monospace;
     /*color: #35355e;*/
-    color:var(--color-secondary);
+    color: var(--color-secondary);
 }
 
-.page-number{
+.page-number {
     border: none;
 }
 
-.moviesInfoContainer{
+.moviesInfoContainer {
     background: #d4d4fa;
     width: 70vw;
     display: flex;
@@ -184,14 +195,24 @@ ul {
     margin-left: 15vw;
     padding: 15px;
 }
-.posterDiv{
+
+.posterDiv {
     width: 45%;
 }
-.movieInfo{
+
+.movieInfo {
     height: 600px;
     width: 50%;
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rating {
+
+    display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
 }
