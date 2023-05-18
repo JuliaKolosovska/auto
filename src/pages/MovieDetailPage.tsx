@@ -42,7 +42,7 @@ const MovieDetailPage: FC<MovieDetailPageProps> = () => {
     // }, [id]);
     return (
         <div>
-           <MovieInfo movieId={id} genre_ids={movie.genre_ids} id={movie.id} title={movie.title} original_title={movie.original_title} poster_path={movie.poster_path}
+           <MovieInfo movieId={id} genres={movie.genres}  id={movie.id} title={movie.title} original_title={movie.original_title} poster_path={movie.poster_path}
                       release_date={movie.release_date} budget={movie.budget} revenue={movie.revenue} vote_average={movie.vote_average} overview={movie.overview}  />
 
 
