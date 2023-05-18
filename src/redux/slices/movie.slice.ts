@@ -61,6 +61,12 @@ const slice = createSlice({
     name: 'movieSlice',
     initialState,
     reducers: {
+        nextPage: (state, action) => {
+            state.currentPage += 1
+        },
+        prevPage: (state, action) => {
+            state.currentPage -= 1
+        },
         resetPage: (state) => {
             state.currentPage =1
         },
@@ -97,11 +103,15 @@ const slice = createSlice({
 const {
     actions: {
         resetPage,
-        setPage
+        setPage,
+        nextPage,
+        prevPage,
     }, reducer: movieReducer
 } = slice;
 
 const movieActions = {
+    nextPage,
+    prevPage,
     resetPage,
     setPage,
     getAll,

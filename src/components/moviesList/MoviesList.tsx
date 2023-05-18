@@ -5,6 +5,7 @@ import {movieActions} from "../../redux/slices";
 import {MoviesListCard} from "../moviesListCard/MoviesListCard";
 import {MoviePagination} from "../moviePagination/MoviePagination";
 import {ThemeSwitcher} from "../theme/ThemeSwitcher";
+import { useSearchParams } from 'react-router-dom';
 
 
 
@@ -15,7 +16,8 @@ const MoviesList:FC = () => {
     const {movies, currentPage}=useAppSelector(state => state.movieReducer);
     const dispatch=useAppDispatch();
 
-
+    const [searchParams, setSearchParams] = useSearchParams();
+    const thisPage = searchParams.get('page')
 
     useEffect(()=>{
         dispatch(movieActions.getAll({currentPage: currentPage.toString()}))
@@ -26,7 +28,7 @@ const MoviesList:FC = () => {
     return (
         <div  className={'moviesContainer'} >
             {movies.map((movie)=><MoviesListCard key={movie.id} movie={movie}/>)}
-<MoviePagination/>
+<MoviePagination key={thisPage}/>
 
         </div>
     );

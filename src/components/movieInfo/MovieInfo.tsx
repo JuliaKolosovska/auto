@@ -5,14 +5,18 @@ import {movieActions} from "../../redux/slices";
 import {useAppSelector} from "../../hooks";
 import {Rating} from 'react-simple-star-rating'
 import {GenreBadge} from "../genreBadge/GenreBadge";
-import {IGenre} from "../../interfaces";
+import {IGenre, IMovie} from "../../interfaces";
 import {posterURL} from "../../configs";
+import { useLocation } from 'react-router-dom';
 
 
 interface IProps {
+
+    movie: IMovie;
+    genres: IGenre[];
+
     movieId: string;
-    genres: IGenre[],
-    // genre_ids:number[];
+
     id: number,
     title: string,
     original_title: string,
@@ -31,6 +35,16 @@ const MovieInfo: FC<IProps> = ({movieId, genres}) => {
 
     const dispatch = useDispatch<any>();
     const {movie} = useAppSelector(state => state.movieReducer);
+
+    const location = useLocation()
+
+    const {state} = location
+    const {
+        genre_ids, overview, original_language, original_title, popularity, title, vote_average, vote_count, poster_path
+    } = state
+
+    const movieGenre = genres?.filter(genre => genre_ids.includes(genre.id))
+
     useEffect(() => {
         dispatch(movieActions.getMovieDetails({id: parseInt(movieId)}))
     }, [dispatch, movieId]);
@@ -39,13 +53,18 @@ const MovieInfo: FC<IProps> = ({movieId, genres}) => {
         return <h4 className={'loading'}>Loading......</h4>
     }
 
+
     return (
         <div className={'moviesInfoContainer'}>
             <div className={'posterDiv'}>
                 <img className={'poster'} src={posterURL + movie.poster_path}
                      alt="{title}"/></div>
             <div className={'movieInfo'}>
-                <GenreBadge genresIds={genres.map(genre =>genre.id)}/>
+
+                <div className={'movie-genres'}>
+                    {movieGenre?.map(genre => (<p key={genre.id}>{genre.name}</p>))}
+                </div>
+
                 <div className={'rating'}><Rating
                     readonly={true}
                     initialValue={movie.vote_average}

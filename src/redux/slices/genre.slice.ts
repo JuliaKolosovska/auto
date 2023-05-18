@@ -43,6 +43,8 @@ const genreSlice=createSlice({
             state.movieGenres = action.payload
             state.error=''
         })
+
+
 })
 
 const {reducer:genreReducer,actions:{getGenre

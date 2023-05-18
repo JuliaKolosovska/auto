@@ -58,7 +58,8 @@ ul {
 
 .logo {
     text-decoration: none;
-    color: var(--color-secondary);
+    color: #d4d4fa;
+    /*color: var(--color-secondary);*/
     margin-left: 40px;
     font-size: 35px;
     font-family: "Brush Script MT", "Courier New", monospace;
@@ -73,13 +74,14 @@ ul {
     border: #fafafd;
     border-radius: 50px;
     padding: 20px;
-    background: var(--color-secondary);
+    /*background: var(--color-secondary);*/
 
 
 }
 
 .search::placeholder {
-    color: var(--color-primary);
+    /*color: var(--color-primary);*/
+    color: #5454bd;
 }
 
 .search:focus {
@@ -176,8 +178,8 @@ ul {
     margin-left: 10px;
     size: 30px;
     font-family: "Lucida Console", "Courier New", monospace;
-    /*color: #35355e;*/
-    color: var(--color-secondary);
+    color: #d4d4fa;;
+    /*color: var(--color-secondary);*/
 }
 
 .page-number {
@@ -238,8 +240,13 @@ ul {
 }
 
 .genres-btn:hover {
+    cursor: pointer;
     color: #fff;
     background: #5555bd;
     border: 1px solid #8481f6;
     box-shadow: 0 0 10px #8885ff;
+}
+
+.movie-genres{
+    width: 100%;
 }

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../../hooks";
-import {useSearchParams} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 
 import {movieActions} from "../../redux/slices";
 
@@ -13,20 +13,21 @@ const MoviePagination = () => {
     const [, setQuery] = useSearchParams();
     const [totalPages] = useState(500);
     const [pagesToShow] = useState(15);
+    const navigate = useNavigate();
 
-
-    const prev = () => {
-        // setQuery(currentPage => ({ ...currentPage, page: +(currentPage.get('currentPage')) - 1 }));
-        dispatch(movieActions.resetPage())
+    const prev = async () => {
+        dispatch(movieActions.prevPage);
+        navigate(`?page=${currentPage - 1}`);
     };
 
-    const next = () => {
-        setQuery(currentPage => ({ ...currentPage, page: +(currentPage.get('currentPage')) + 1 }));
+    const next = async () => {
+        dispatch(movieActions.nextPage);
+        navigate(`?page=${currentPage + 1}`);
     };
 
-    const pageButton = () => {
-        // setQuery(currentPage => ({ ...currentPage, page: currentPage }));
-        dispatch(movieActions.setPage(currentPage))
+    const thisPage = async () => {
+        dispatch(movieActions.setPage(currentPage));
+        navigate(`?page=${currentPage}`);
     };
 
     const generatePageNumbers = () => {
@@ -53,8 +54,8 @@ const MoviePagination = () => {
                 {generatePageNumbers().map((number) => (
                     <li
                         key={number}
-                        onClick={pageButton}
-                        // onClick={() => (number)}
+                        onClick={thisPage}
+
                         className={'page-number ' + (number === currentPage ? 'active' : '')}
                     >
                         {number}
