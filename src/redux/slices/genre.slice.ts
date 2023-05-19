@@ -5,7 +5,7 @@ import {genreService} from "../../services";
 
 export interface IGenreState {
     movieGenres: IGenre[],
-    movieGenre:null,
+    movieGenre:object,
     id: number | null,
     status: string | null,
     error: string | null

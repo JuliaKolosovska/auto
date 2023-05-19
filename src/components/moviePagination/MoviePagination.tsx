@@ -16,21 +16,16 @@ const MoviePagination = () => {
     const navigate = useNavigate();
 
     const prev = async () => {
-        dispatch(movieActions.prevPage);
+        dispatch(movieActions.prevPage(currentPage));
         navigate(`?page=${currentPage - 1}`);
     };
 
     const next = async () => {
-        dispatch(movieActions.nextPage);
+        dispatch(movieActions.nextPage(currentPage));
         navigate(`?page=${currentPage + 1}`);
     };
 
-    const thisPage = async () => {
-        dispatch(movieActions.setPage(currentPage));
-        navigate(`?page=${currentPage}`);
-    };
-
-    const generatePageNumbers = () => {
+      const generatePageNumbers = () => {
         const current = currentPage;
         const last = totalPages;
         const start = Math.max(1, current - Math.floor(pagesToShow / 2));
@@ -40,29 +35,43 @@ const MoviePagination = () => {
 
         for (let i = start; i <= end; i++) {
             pageNumbers.push(i);
+
         }
 
         return pageNumbers;
     };
-
     return (
         <div>
             <ul className="pagination">
-                <button onClick={prev} className="page-number" disabled={!prev}>
+                <button onClick={async () => {
+                    dispatch(movieActions.setPage(1));
+                    navigate(`?page=${1}`);
+                }} className="page-number" disabled={!prev}>
+                   First page
+                </button>
+                <button onClick={prev} className="page-number" disabled={currentPage === 1}>
                     Prev
                 </button>
                 {generatePageNumbers().map((number) => (
                     <li
                         key={number}
-                        onClick={thisPage}
-
+                        onClick={async () => {
+                            dispatch(movieActions.setPage(number));
+                            navigate(`?page=${number}`);
+                        }}
                         className={'page-number ' + (number === currentPage ? 'active' : '')}
                     >
                         {number}
                     </li>
                 ))}
-                <button onClick={next} className="page-number" disabled={!next}>
+                <button onClick={next} className="page-number" disabled={currentPage === 500}>
                     Next
+                </button>
+                <button onClick={async () => {
+                    dispatch(movieActions.setPage(500));
+                    navigate(`?page=${500}`);
+                }} className="page-number" disabled={!prev}>
+                    Last page
                 </button>
             </ul>
         </div>

@@ -44,6 +44,11 @@ ul {
     background: #fff;
 }
 
+.pagination .page-number:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
 #header-container {
     display: flex;
     justify-content: space-between;
@@ -219,7 +224,7 @@ ul {
     align-items: center;
 }
 
-.genre-badge{
+.genre-badge {
     padding: 15px;
     display: flex;
     flex-wrap: wrap;
@@ -232,7 +237,8 @@ ul {
     height: 70px;
     background: #d4d4fa;
 }
-.genres-btn{
+
+.genres-btn {
     border: none;
     border-radius: 10px;
     margin: 10px;
@@ -247,6 +253,6 @@ ul {
     box-shadow: 0 0 10px #8885ff;
 }
 
-.movie-genres{
-    width: 100%;
+.movie-genres {
+
 }

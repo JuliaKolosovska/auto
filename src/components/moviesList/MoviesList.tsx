@@ -18,7 +18,7 @@ const MoviesList:FC = () => {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const thisPage = searchParams.get('page')
-
+    console.log(currentPage);
     useEffect(()=>{
         dispatch(movieActions.getAll({currentPage: currentPage.toString()}))
     },[dispatch]);
@@ -28,7 +28,10 @@ const MoviesList:FC = () => {
     return (
         <div  className={'moviesContainer'} >
             {movies.map((movie)=><MoviesListCard key={movie.id} movie={movie}/>)}
-<MoviePagination key={thisPage}/>
+<MoviePagination  currentPage={currentPage}
+
+
+                  />
 
         </div>
     );
