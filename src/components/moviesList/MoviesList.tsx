@@ -11,27 +11,23 @@ import { useSearchParams } from 'react-router-dom';
 
 const MoviesList:FC = () => {
 
+    const { movies, currentPage } = useAppSelector(state => state.movieReducer);
+    const dispatch = useAppDispatch();
 
+    const [searchParams] = useSearchParams();
+    const thisPage = searchParams.get('page');
+    console.log(thisPage);
+    useEffect(() => {
 
-    const {movies, currentPage}=useAppSelector(state => state.movieReducer);
-    const dispatch=useAppDispatch();
-
-    const [searchParams, setSearchParams] = useSearchParams();
-    const thisPage = searchParams.get('page')
-    console.log(currentPage);
-    useEffect(()=>{
-        dispatch(movieActions.getAll({currentPage: currentPage.toString()}))
-    },[dispatch]);
-
+            dispatch(movieActions.setPage(thisPage));
+            dispatch(movieActions.getAll({ currentPage: thisPage}));
+    }, [thisPage, dispatch]);
 
 
     return (
         <div  className={'moviesContainer'} >
             {movies.map((movie)=><MoviesListCard key={movie.id} movie={movie}/>)}
-<MoviePagination  currentPage={currentPage}
-
-
-                  />
+<MoviePagination currentPage={currentPage}/>
 
         </div>
     );

@@ -1,45 +1,77 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, FC} from 'react';
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {useNavigate, useSearchParams} from "react-router-dom";
 
 import {movieActions} from "../../redux/slices";
 
 
+interface MoviePaginationProps {
+    currentPage: number;
+}
 
-const MoviePagination = () => {
+const MoviePagination:FC<MoviePaginationProps> = ({currentPage}) => {
     const dispatch = useAppDispatch();
-
-    const { currentPage } = useAppSelector(state => state.movieReducer);
-    const [, setQuery] = useSearchParams();
-    const [totalPages] = useState(500);
-    const [pagesToShow] = useState(15);
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const thisPage = searchParams.get('page');
 
-    const prev = async () => {
-        dispatch(movieActions.prevPage(currentPage));
-        navigate(`?page=${currentPage - 1}`);
-    };
-
-    const next = async () => {
-        dispatch(movieActions.nextPage(currentPage));
-        navigate(`?page=${currentPage + 1}`);
-    };
-
-      const generatePageNumbers = () => {
-        const current = currentPage;
-        const last = totalPages;
-        const start = Math.max(1, current - Math.floor(pagesToShow / 2));
-        const end = Math.min(last, start + pagesToShow - 1);
-
-        const pageNumbers = [];
-
-        for (let i = start; i <= end; i++) {
-            pageNumbers.push(i);
-
+    const prev = () => {
+        if (currentPage > 1) {
+            const newPage = currentPage - 1;
+            dispatch(movieActions.setPage(newPage));
+            navigate(`?page=${newPage}`);
         }
-
-        return pageNumbers;
     };
+
+    const next = () => {
+        const newPage = currentPage + 1;
+        dispatch(movieActions.setPage(newPage));
+        navigate(`?page=${newPage}`);
+    };
+
+
+
+//     const dispatch = useAppDispatch();
+//     const { currentPage } = useAppSelector(state => state.movieReducer);
+//     const navigate = useNavigate();
+//     const [searchParams] = useSearchParams();
+//     const thisPage = searchParams.get('page');
+//
+//
+//
+//     const prev = () => {
+//         if (currentPage > 1) {
+//             const newPage = currentPage - 1;
+//             dispatch(movieActions.setPage(newPage));
+//             navigate(`?page=${newPage}`);
+//         }
+//     };
+//
+//     const next = () => {
+//         const newPage = currentPage + 1;
+//         dispatch(movieActions.setPage(newPage));
+//         navigate(`?page=${newPage}`);
+//     };
+//
+const [totalPages] = useState(500);
+const [pagesToShow] = useState(15);
+
+    const generatePageNumbers = () => {
+            const current = currentPage;
+            const last = totalPages;
+            const start = Math.max(1, current - Math.floor(pagesToShow / 2));
+            const end = Math.min(last, start + pagesToShow - 1);
+
+            const pageNumbers = [];
+
+            for (let i = start; i <= end; i++) {
+                pageNumbers.push(i);
+
+            }
+
+            return pageNumbers;
+        };
+
     return (
         <div>
             <ul className="pagination">
