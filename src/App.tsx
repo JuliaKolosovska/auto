@@ -7,13 +7,13 @@ import {ThemeContext, ThemeProvider, ThemeSwitcher} from "./components";
 
 const App: FC = () => {
 
-    const {dark} = useContext(ThemeContext);
+
 
 
 
     return (
 
-        <ThemeProvider dark={dark}>
+
 
             <Routes>
                 <Route path={'/'} element={<MainLayout/>}>
@@ -23,7 +23,7 @@ const App: FC = () => {
 
                 </Route>
             </Routes>
-        </ThemeProvider>
+
 
     );
 }

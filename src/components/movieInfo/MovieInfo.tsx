@@ -1,4 +1,4 @@
-import React, {FC, useEffect} from 'react';
+import React, {FC, useContext, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import {Rating} from 'react-simple-star-rating'
 import {useLocation} from 'react-router-dom';
@@ -8,6 +8,7 @@ import {useAppSelector} from "../../hooks";
 import {GenreBadge} from "../genreBadge/GenreBadge";
 import {IGenre, IMovie} from "../../interfaces";
 import {posterURL} from "../../configs";
+import { ThemeContext } from '../theme/ThemeContext';
 
 
 
@@ -28,6 +29,8 @@ interface IProps {
 
 
 const MovieInfo: FC<IProps> = ({movieId}) => {
+
+    const { currentTheme, toggleTheme } = useContext(ThemeContext);
     const dispatch = useDispatch<any>();
     const {movie} = useAppSelector(state => state.movieReducer);
     const {title, genres, release_date, poster_path, vote_average} = movie;
@@ -43,7 +46,7 @@ const MovieInfo: FC<IProps> = ({movieId}) => {
 
     console.log(movie);
     return (
-        <div className={'moviesInfoContainer'}>
+        <div className={`moviesInfoContainer ${currentTheme}`}>
             <div className={'posterDiv'}>
                 <img className={'poster'} src={posterURL + movie.poster_path}
                      alt="{title}"/></div>

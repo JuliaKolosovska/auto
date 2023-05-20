@@ -1,19 +1,18 @@
-import React, {useState} from 'react';
-import {Header, ThemeSwitcher} from "../components";
+import React, {useState, FC} from 'react';
+import {Header, ThemeProvider, ThemeSwitcher} from "../components";
 import {Outlet} from "react-router-dom";
 
 
 
-
-const MainLayout = () => {
+const MainLayout:FC = () => {
 
     return (
-        <div >
+        <ThemeProvider >
 
             <Header/>
 
             <Outlet/>
-        </div>
+        </ThemeProvider>
     );
 };
 

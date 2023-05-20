@@ -30,29 +30,6 @@ const MoviePagination:FC<MoviePaginationProps> = ({currentPage}) => {
     };
 
 
-
-//     const dispatch = useAppDispatch();
-//     const { currentPage } = useAppSelector(state => state.movieReducer);
-//     const navigate = useNavigate();
-//     const [searchParams] = useSearchParams();
-//     const thisPage = searchParams.get('page');
-//
-//
-//
-//     const prev = () => {
-//         if (currentPage > 1) {
-//             const newPage = currentPage - 1;
-//             dispatch(movieActions.setPage(newPage));
-//             navigate(`?page=${newPage}`);
-//         }
-//     };
-//
-//     const next = () => {
-//         const newPage = currentPage + 1;
-//         dispatch(movieActions.setPage(newPage));
-//         navigate(`?page=${newPage}`);
-//     };
-//
 const [totalPages] = useState(500);
 const [pagesToShow] = useState(15);
 
