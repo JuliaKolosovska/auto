@@ -1,6 +1,8 @@
 import React, {useState, FC} from 'react';
-import {Header, ThemeProvider, ThemeSwitcher} from "../components";
 import {Outlet} from "react-router-dom";
+
+import {Header, ThemeProvider, ThemeSwitcher} from "../components";
+
 
 
 

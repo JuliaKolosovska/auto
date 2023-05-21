@@ -1,6 +1,7 @@
 import React,{FC, useState, useEffect} from 'react';
-import {MovieInfo, ThemeSwitcher} from "../components";
 import {useParams} from "react-router-dom";
+
+import {MovieInfo, ThemeSwitcher} from "../components";
 import {IGenre, IMovie} from "../interfaces";
 import {movieService} from "../services";
 import { useAppDispatch } from '../hooks';

@@ -62,6 +62,4 @@ input:checked + .slider:before {
 
     --color-primary: #303067F5;
     --color-secondary: #D4D4FAF5;
-
-
 }

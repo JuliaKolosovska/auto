@@ -1,15 +1,14 @@
 import React, {useState, useEffect, FC} from 'react';
-import {useAppDispatch, useAppSelector} from "../../hooks";
 import {useNavigate, useSearchParams} from "react-router-dom";
 
+import {useAppDispatch, useAppSelector} from "../../hooks";
 import {movieActions} from "../../redux/slices";
-
 
 interface MoviePaginationProps {
     currentPage: number;
 }
 
-const MoviePagination:FC<MoviePaginationProps> = ({currentPage}) => {
+const MoviePagination: FC<MoviePaginationProps> = ({currentPage}) => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
@@ -29,25 +28,24 @@ const MoviePagination:FC<MoviePaginationProps> = ({currentPage}) => {
         navigate(`?page=${newPage}`);
     };
 
-
-const [totalPages] = useState(500);
-const [pagesToShow] = useState(15);
+    const [totalPages] = useState(500);
+    const [pagesToShow] = useState(15);
 
     const generatePageNumbers = () => {
-            const current = currentPage;
-            const last = totalPages;
-            const start = Math.max(1, current - Math.floor(pagesToShow / 2));
-            const end = Math.min(last, start + pagesToShow - 1);
+        const current = currentPage;
+        const last = totalPages;
+        const start = Math.max(1, current - Math.floor(pagesToShow / 2));
+        const end = Math.min(last, start + pagesToShow - 1);
 
-            const pageNumbers = [];
+        const pageNumbers = [];
 
-            for (let i = start; i <= end; i++) {
-                pageNumbers.push(i);
+        for (let i = start; i <= end; i++) {
+            pageNumbers.push(i);
 
-            }
+        }
 
-            return pageNumbers;
-        };
+        return pageNumbers;
+    };
 
     return (
         <div>
@@ -56,7 +54,7 @@ const [pagesToShow] = useState(15);
                     dispatch(movieActions.setPage(1));
                     navigate(`?page=${1}`);
                 }} className="page-number" disabled={!prev}>
-                   First page
+                    First page
                 </button>
                 <button onClick={prev} className="page-number" disabled={currentPage === 1}>
                     Prev

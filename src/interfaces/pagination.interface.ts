@@ -5,5 +5,4 @@ export interface IPagination<T> {
     prev: number;
     next: number;
     items: T;
-
 }

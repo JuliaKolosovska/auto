@@ -8,12 +8,8 @@ export interface IGenreService {
     genres: IGenre[]
 }
 
-
-
 const genreService={
     getAllGenres:():IRes<IGenreService>=>axiosService.get(`${urls.genres}`),
-
-
 }
 
 export {

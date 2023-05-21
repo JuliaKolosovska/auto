@@ -1,9 +1,10 @@
 import React, {FC, useContext} from 'react';
-import {IMovie} from "../../interfaces";
 import {Link} from "react-router-dom";
-import {Rating} from 'react-simple-star-rating'
-import { ThemeContext } from '../theme/ThemeContext';
 
+import {Rating} from 'react-simple-star-rating'
+
+import {IMovie} from "../../interfaces";
+import {ThemeContext} from '../theme/ThemeContext';
 
 interface IProps {
     movie: IMovie
@@ -11,7 +12,7 @@ interface IProps {
 
 const MoviesListCard: FC<IProps> = ({movie}) => {
     const {poster_path, title, vote_average, id} = movie;
-    const { currentTheme, toggleTheme } = useContext(ThemeContext);
+    const {currentTheme, toggleTheme} = useContext(ThemeContext);
 
     return (
 
@@ -20,7 +21,6 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
                 <img className={'poster'} src={"https://image.tmdb.org/t/p/w500/" + poster_path} alt="{title}"></img>
                 <div className={'title-vote'}>
                     <div className={`title ${currentTheme}`}>{title}</div>
-
                     <div className={'vote'}>
                         <Rating
                             readonly={true}
@@ -33,7 +33,6 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
                 </div>
             </Link>
         </div>
-
     );
 };
 

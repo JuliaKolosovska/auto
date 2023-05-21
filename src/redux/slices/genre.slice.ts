@@ -1,11 +1,12 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
+
 import {IGenre} from "../../interfaces";
 import {genreService} from "../../services";
 
 export interface IGenreState {
     movieGenres: IGenre[],
-    movieGenre:object,
+    movieGenre: object,
     id: number | null,
     status: string | null,
     error: string | null
@@ -13,7 +14,7 @@ export interface IGenreState {
 
 const initialState: IGenreState = {
     movieGenres: [],
-    movieGenre:null,
+    movieGenre: null,
     id: null,
     status: null,
     error: ''
@@ -31,27 +32,24 @@ const getGenres = createAsyncThunk<IGenre[], void>(
     }
 )
 
-
-const genreSlice=createSlice({
-    name:'genreSlice',
+const genreSlice = createSlice({
+    name: 'genreSlice',
     initialState,
-    reducers: { getGenre: (state, action) => {
+    reducers: {
+        getGenre: (state, action) => {
             state.movieGenre = action.payload
-        }},
+        }
+    },
     extraReducers: builder => builder
         .addCase(getGenres.fulfilled, (state, action) => {
             state.movieGenres = action.payload
-            state.error=''
+            state.error = ''
         })
-
-
 })
 
-const {reducer:genreReducer,actions:{getGenre
+const {reducer: genreReducer, actions: {getGenre}} = genreSlice
 
-}}=genreSlice
-
-const genreActions={
+const genreActions = {
     getGenres,
     getGenre
 }

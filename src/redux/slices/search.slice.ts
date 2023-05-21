@@ -6,12 +6,10 @@ import {searchService} from "../../services";
 
 export interface ISearchState {
     searched: ISearch[];
-
 }
 
 const initialState: ISearchState = {
     searched: [],
-
 };
 
 const find = createAsyncThunk<ISearch[], { name: string }>(
@@ -21,10 +19,9 @@ const find = createAsyncThunk<ISearch[], { name: string }>(
             if (name.length <= 1) return [];
             const {data} = await searchService.search(name);
             return data.results.map((item: IMovie): ISearch => {
-                const { id, poster_path, title, vote_average} = item;
-                return { id, poster_path, title, vote_average};
+                const {id, title, poster_path, vote_average} = item;
+                return {id, name};
             });
-
         } catch (e) {
             return rejectWithValue((e as AxiosError).response?.data)
         }

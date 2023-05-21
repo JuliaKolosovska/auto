@@ -5,17 +5,10 @@ import './dark.css';
 import {ThemeContext} from "./ThemeContext";
 
 const ThemeSwitcher: React.FC = () => {
-  const { currentTheme, toggleTheme } = useContext(ThemeContext);
-    // const [currentTheme, setCurrentTheme] = useState('dark');
-    //
-    // const toggleTheme = () => {
-    //     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    //     setCurrentTheme(newTheme);
-    //     document.documentElement.classList.remove('dark', 'light');
-    //     document.documentElement.classList.add(newTheme);
-    // };
+    const {currentTheme, toggleTheme} = useContext(ThemeContext);
+
     return (
-        <label  className={'switch'}>
+        <label className={'switch'}>
             <input className={`${currentTheme}`} onClick={toggleTheme} type="checkbox"/>
             <span className="slider round"></span>
         </label>

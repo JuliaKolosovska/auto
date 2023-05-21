@@ -1,4 +1,4 @@
-import React, { createContext, useState, FC } from 'react';
+import React, {createContext, useState, FC} from 'react';
 
 type ThemeContextType = {
     currentTheme: string;
@@ -7,10 +7,11 @@ type ThemeContextType = {
 
 const ThemeContext = createContext<ThemeContextType>({
     currentTheme: 'dark',
-    toggleTheme: () => {},
+    toggleTheme: () => {
+    },
 });
 
- const ThemeProvider:FC<{ children: React.ReactNode }> = ({ children })=> {
+const ThemeProvider: FC<{ children: React.ReactNode }> = ({children}) => {
     const [currentTheme, setCurrentTheme] = useState('dark');
 
     const toggleTheme = () => {
@@ -32,8 +33,7 @@ const ThemeContext = createContext<ThemeContextType>({
     );
 };
 
- export {
-     ThemeContext,
-     ThemeProvider
-
- }
+export {
+    ThemeContext,
+    ThemeProvider
+}

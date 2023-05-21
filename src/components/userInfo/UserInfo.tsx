@@ -2,7 +2,6 @@ import React from 'react';
 
 import stepan from '../../images/Stepan.jpg'
 
-
 const UserInfo = () => {
     return (
         <div className={'user-container'}>

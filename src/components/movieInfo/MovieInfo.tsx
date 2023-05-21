@@ -8,9 +8,7 @@ import {useAppSelector} from "../../hooks";
 import {GenreBadge} from "../genreBadge/GenreBadge";
 import {IGenre, IMovie} from "../../interfaces";
 import {posterURL} from "../../configs";
-import { ThemeContext } from '../theme/ThemeContext';
-
-
+import {ThemeContext} from '../theme/ThemeContext';
 
 interface IProps {
     movie: IMovie;
@@ -27,10 +25,9 @@ interface IProps {
     overview: string
 }
 
-
 const MovieInfo: FC<IProps> = ({movieId}) => {
 
-    const { currentTheme, toggleTheme } = useContext(ThemeContext);
+    const {currentTheme, toggleTheme} = useContext(ThemeContext);
     const dispatch = useDispatch<any>();
     const {movie} = useAppSelector(state => state.movieReducer);
     const {title, genres, release_date, poster_path, vote_average} = movie;
@@ -44,7 +41,6 @@ const MovieInfo: FC<IProps> = ({movieId}) => {
         return <h4 className={'loading'}>Loading......</h4>
     }
 
-    console.log(movie);
     return (
         <div className={`moviesInfoContainer ${currentTheme}`}>
             <div className={'posterDiv'}>
@@ -68,8 +64,6 @@ const MovieInfo: FC<IProps> = ({movieId}) => {
                 <div>Release date: {movie.release_date}</div>
                 <div>Overview <br/> <br/>{movie.overview}</div>
             </div>
-
-
         </div>
     );
 };

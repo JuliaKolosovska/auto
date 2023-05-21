@@ -54,15 +54,14 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-      width: 70vw;
-    margin-left: 15vw;
+    width: 100%;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
 }
 
 .logo {
     text-decoration: none;
-       margin-left: 40px;
+    margin-left: 40px;
     font-size: 35px;
     font-family: "Brush Script MT", "Courier New", monospace;
 }
@@ -80,7 +79,7 @@ ul {
 }
 
 .search::placeholder {
-        color: #5454bd;
+    color: #5454bd;
 }
 
 .search:focus {
@@ -88,7 +87,6 @@ ul {
     border: 1px solid #15ab85;
     box-shadow: 0 0 10px #4fe7c9;
 }
-
 
 .moviesContainer {
     width: 70vw;
@@ -106,7 +104,6 @@ ul {
 .moviesContainer a {
     text-decoration: none;
     color: #5454bd;
-
 }
 
 .moviesContainer a[class='active'] {
@@ -123,11 +120,9 @@ ul {
     margin: 10px;
     width: 18%;
     border-radius: 10px;
-
 }
 
 .movieCard:hover {
-
     border: 1px solid #8481f6;
     box-shadow: 0 0 10px #8885ff;
 }
@@ -139,7 +134,6 @@ ul {
 }
 
 .title {
-
     font-size: 15px;
     font-family: "Lucida Console", "Courier New", monospace;
 }
@@ -160,7 +154,6 @@ ul {
     width: 90px;
     height: 100px;
     margin-right: 40px;
-
 }
 
 .user-container:hover {
@@ -209,7 +202,6 @@ ul {
 }
 
 .rating {
-
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -226,7 +218,6 @@ ul {
     margin-left: 15vw;
     width: 70vw;
     height: 100px;
-
 }
 
 .genres-btn {
@@ -244,6 +235,20 @@ ul {
     box-shadow: 0 0 10px #8885ff;
 }
 
-.movie-genres {
+.all-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70vw;
+    margin-left: 15vw;
+}
 
+.header-searched {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 15px;
 }
