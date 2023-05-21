@@ -12,15 +12,23 @@ const initialState: ISearchState = {
     searched: [],
 };
 
-const find = createAsyncThunk<ISearch[], { name: string }>(
+const find = createAsyncThunk<ISearch[] | [], { name: string }>(
     "searchSlice/find",
     async ({name}, {rejectWithValue}) => {
         try {
             if (name.length <= 1) return [];
             const {data} = await searchService.search(name);
             return data.results.map((item: IMovie): ISearch => {
-                const {id, title, poster_path, vote_average} = item;
-                return {id, name};
+                // const {id, title, poster_path, vote_average} = item;
+                // return {id, name};
+                const newItem: ISearch = {
+                    id: item.id,
+                    name:item.title,
+                    poster_path: item.poster_path,
+                    vote_average: item.vote_average,
+
+                }
+                return newItem
             });
         } catch (e) {
             return rejectWithValue((e as AxiosError).response?.data)

@@ -38,7 +38,7 @@ const Header = () => {
                 <ThemeSwitcher/>
                 <UserInfo/>
             </div>
-            <div className={`header-searched ${currentTheme}`}>{searched.map(item => <Search key={item.id} item={item}
+            <div className={`header-searched ${currentTheme}`}>{searched.map(item => <Search key={item.id} newItem={item}
                                                                                              reset={reset}/>)}</div>
         </div>
     );
