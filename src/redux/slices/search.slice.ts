@@ -6,12 +6,12 @@ import {searchService} from "../../services";
 
 export interface ISearchState {
     searched: ISearch[];
-    genresSelected: string;
+
 }
 
 const initialState: ISearchState = {
     searched: [],
-    genresSelected: "all",
+
 };
 
 const find = createAsyncThunk<ISearch[], { name: string }>(
@@ -21,16 +21,12 @@ const find = createAsyncThunk<ISearch[], { name: string }>(
             if (name.length <= 1) return [];
             const {data} = await searchService.search(name);
             return data.results.map((item: IMovie): ISearch => {
-                const newSearch: ISearch = {
-                    id: item.id,
-                    poster_path: item.poster_path,
-                    title: item.title,
-                    vote_average: item.vote_average,
-                };
-                return newSearch;
+                const { id, poster_path, title, vote_average} = item;
+                return { id, poster_path, title, vote_average};
             });
+
         } catch (e) {
-            return rejectWithValue((e as AxiosError).response?.data);
+            return rejectWithValue((e as AxiosError).response?.data)
         }
     }
 );
