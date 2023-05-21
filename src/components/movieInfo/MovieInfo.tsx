@@ -44,8 +44,11 @@ const MovieInfo: FC<IProps> = ({movieId}) => {
     return (
         <div className={`moviesInfoContainer ${currentTheme}`}>
             <div className={'posterDiv'}>
-                <img className={'poster'} src={posterURL + movie.poster_path}
-                     alt="{title}"/></div>
+                <img
+                    className="poster"
+                    src={movie.poster_path ? `${posterURL}${movie.poster_path}` : 'https://ps.w.org/replace-broken-images/assets/icon-256x256.png'}
+                    alt={movie.title}
+                /></div>
             <div className={'movieInfo'}>
                 <div className={'movie-genres'}>
                     {genres.map(genre => (<button key={genre.id} className="genres-btn">{genre.name}</button>))}

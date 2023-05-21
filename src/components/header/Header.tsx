@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import {Outlet} from "react-router-dom";
 import {useForm} from 'react-hook-form';
 
-import {ThemeSwitcher, ThemeContext, Search, UserInfo} from "../index";
+import {ThemeSwitcher, ThemeContext, UserInfo} from "../index";
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {searchAction} from '../../redux/slices';
 import { useSelector } from 'react-redux';
@@ -13,14 +13,10 @@ import { Rating } from 'react-simple-star-rating';
 
 const Header:FC = () => {
     const {currentTheme, toggleTheme} = useContext(ThemeContext);
-    const {register, reset} = useForm<{ search: string }>()
     const {searched} = useSelector((state: RootState) => state.searchReducer);
     const dispatch = useAppDispatch()
     const [searchTerm, setSearchTerm] = useState('');
 
-    // const onChange = () => {
-    //     dispatch(searchAction.find({ name: searchTerm }));
-    // };
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const lim = (name: string): boolean => {
             return name.length >= 2;
@@ -43,19 +39,17 @@ const Header:FC = () => {
                 </Link>
                 <input className={`search`} type="text"
                        placeholder={'what are you looking for?'} value={searchTerm} onChange={onChange}/>
-
                 <ThemeSwitcher/>
                 <UserInfo/>
             </div>
 
             <div className={`header-searched ${currentTheme}`}>{searched.map((item) => (
-
                 <div className={`movieCard ${currentTheme}`}>
                     <Link to={`/movie/${item.id}`}>
                         <img
                             className="poster"
                             src={item.poster_path ? `https://image.tmdb.org/t/p/w500/${item.poster_path}` : 'https://ps.w.org/replace-broken-images/assets/icon-256x256.png'}
-                            alt={item.name}
+                            alt={item.title}
                         />
                         <div className={'title-vote'}>
                             <div className={`title ${currentTheme}`}>{item.title}</div>
