@@ -57,11 +57,11 @@ input:checked + .slider:before {
 }
 
 .dark {
-    background-color: #35357a;
-    color: #d4d4fa;
+    background-color: #303067F5;
+    color: #D4D4FAF5;
 
-    --color-primary: #35357a;
-    --color-secondary: #d4d4fa;
+    --color-primary: #303067F5;
+    --color-secondary: #D4D4FAF5;
 
 
 }

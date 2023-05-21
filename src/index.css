@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    padding: 0;
+    padding: 50px;
     background-image: url('images/bg.jpg');
     background-size: cover;
 }
@@ -56,7 +56,6 @@ ul {
     align-items: center;
       width: 70vw;
     margin-left: 15vw;
-    margin-top: 50px;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
 }
@@ -100,6 +99,8 @@ ul {
     align-items: center;
     margin-left: 15vw;
     padding: 15px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
 }
 
 .moviesContainer a {
@@ -175,7 +176,6 @@ ul {
     margin-left: 10px;
     size: 30px;
     font-family: "Lucida Console", "Courier New", monospace;
-
 }
 
 .page-number {
@@ -191,6 +191,8 @@ ul {
     align-items: center;
     margin-left: 15vw;
     padding: 15px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
 }
 
 .posterDiv {
@@ -221,11 +223,10 @@ ul {
     box-sizing: border-box;
     justify-content: space-around;
     align-items: center;
-
     margin-left: 15vw;
     width: 70vw;
     height: 100px;
-    background: #d4d4fa;
+
 }
 
 .genres-btn {

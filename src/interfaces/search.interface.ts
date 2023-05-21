@@ -5,6 +5,7 @@ export interface ISearch {
     poster_path: string,
     name?: string,
     title?: string
+    vote_average?: number;
     release_date?: string,
     first_air_date?: string,
 }
