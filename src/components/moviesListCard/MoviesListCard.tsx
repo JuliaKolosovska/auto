@@ -18,7 +18,11 @@ const MoviesListCard: FC<IProps> = ({movie}) => {
 
         <div className={`movieCard ${currentTheme}`}>
             <Link to={`/movie/${id}`}>
-                <img className={'poster'} src={"https://image.tmdb.org/t/p/w500/" + poster_path} alt="{title}"></img>
+                <img
+                    className="poster"
+                    src={poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : 'https://ps.w.org/replace-broken-images/assets/icon-256x256.png'}
+                    alt={title}
+                />
                 <div className={'title-vote'}>
                     <div className={`title ${currentTheme}`}>{title}</div>
                     <div className={'vote'}>

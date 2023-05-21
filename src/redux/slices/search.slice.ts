@@ -5,7 +5,7 @@ import {IMovie, ISearch} from "../../interfaces";
 import {searchService} from "../../services";
 
 export interface ISearchState {
-    searched: ISearch[];
+    searched: ISearch[]|[];
 }
 
 const initialState: ISearchState = {
