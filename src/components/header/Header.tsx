@@ -5,13 +5,14 @@ import {useForm} from 'react-hook-form';
 
 import {ThemeSwitcher, ThemeContext, UserInfo} from "../index";
 import {useAppDispatch, useAppSelector} from '../../hooks';
-import {searchAction} from '../../redux/slices';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../redux';
-import { Rating } from 'react-simple-star-rating';
+import {movieActions, searchAction} from '../../redux/slices';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../redux';
+import {Rating} from 'react-simple-star-rating';
+import {posterURL} from '../../configs';
 
 
-const Header:FC = () => {
+const Header: FC = () => {
     const {currentTheme, toggleTheme} = useContext(ThemeContext);
     const {searched} = useSelector((state: RootState) => state.searchReducer);
     const dispatch = useAppDispatch()
@@ -23,14 +24,18 @@ const Header:FC = () => {
         }
         const value = e.target.value;
         setSearchTerm(value);
-        console.log(value);
+
         if (lim(value)) {
-            dispatch(searchAction.find({ name: value }));
+            dispatch(searchAction.find({name: value}));
         } else {
             dispatch(searchAction.resetSearch());
         }
     }
 
+    searched.forEach((item) => {
+
+        console.log(item);
+    });
     return (
         <div className={'all-header'}>
             <div className={`header-container ${currentTheme}`}>
@@ -44,11 +49,11 @@ const Header:FC = () => {
             </div>
 
             <div className={`header-searched ${currentTheme}`}>{searched.map((item) => (
-                <div className={`movieCard ${currentTheme}`}>
+                <div key={item.id} className={`movieCard ${currentTheme}`}>
                     <Link to={`/movie/${item.id}`}>
                         <img
                             className="poster"
-                            src={item.poster_path ? `https://image.tmdb.org/t/p/w500/${item.poster_path}` : 'https://ps.w.org/replace-broken-images/assets/icon-256x256.png'}
+                            src={item.poster_path ? `${posterURL}${item.poster_path}` : 'https://ps.w.org/replace-broken-images/assets/icon-256x256.png'}
                             alt={item.title}
                         />
                         <div className={'title-vote'}>

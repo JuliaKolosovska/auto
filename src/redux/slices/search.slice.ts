@@ -1,15 +1,17 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {AxiosError} from "axios";
 
-import {IMovie, ISearch} from "../../interfaces";
+import {IMovieDetails, ISearch} from "../../interfaces";
 import {searchService} from "../../services";
 
 export interface ISearchState {
-    searched: ISearch[]|[];
+    searched: ISearch[] | [];
+    filterParam: ''
 }
 
 const initialState: ISearchState = {
     searched: [],
+    filterParam: ''
 };
 
 const find = createAsyncThunk<ISearch[] | [], { name: string }>(
@@ -18,17 +20,15 @@ const find = createAsyncThunk<ISearch[] | [], { name: string }>(
         try {
             if (name.length <= 1) return [];
             const {data} = await searchService.search(name);
-            return data.results.map((item: IMovie): ISearch => {
-                // const {id, title, poster_path, vote_average} = item;
-                // return {id, name};
-                const newItem: ISearch = {
-                    id: item.id,
-                    name:item.title,
-                    poster_path: item.poster_path,
-                    vote_average: item.vote_average,
+            return data.results.map((res: IMovieDetails): ISearch => {
 
+                const item: ISearch = {
+                    id: res.id,
+                    name: res.title,
+                    poster_path: res.poster_path,
+                    vote_average: res.vote_average,
                 }
-                return newItem
+                return item
             });
         } catch (e) {
             return rejectWithValue((e as AxiosError).response?.data)
@@ -57,7 +57,7 @@ const {
 
 const searchAction = {
     find,
-    resetSearch,
+    resetSearch
 };
 
 export {searchAction, searchReducer};

@@ -1,4 +1,4 @@
-import {IMovie} from "./movie.interface"
+import {IMovieDetails} from "./movie.interface"
 
 export interface ISearch {
     id: number,
@@ -11,5 +11,5 @@ export interface ISearch {
 }
 
 export interface ISearchRes {
-    results: IMovie[]
+    results: IMovieDetails[]
 }
